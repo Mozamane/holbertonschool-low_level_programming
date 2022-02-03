@@ -4,7 +4,7 @@
  * main- Is the entry point
  *
  *
- *Return 0 to stop the program
+ * Return -0 to stop the program
  */
 
 int main(void)
