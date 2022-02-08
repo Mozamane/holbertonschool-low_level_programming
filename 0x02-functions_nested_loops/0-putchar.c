@@ -2,13 +2,20 @@
 #include <time.h>
 #include <stdio.h>
 /**
- * greater than or less than 5, or is zero..
-(*
- * Return: 0 on success
+ * main - Entry point
+ *
+ * Return: Always 0 (Success)
  */
-
 int main(void)
 {
-	printf("_putchar\n");
-	return(0);
+	char *sh = "_putchar";
+
+	while (*sh)
+	{
+		putchar(*sh);
+		sh++;
+		putchar('\n');
+	}
+
+	return (0);
 }
