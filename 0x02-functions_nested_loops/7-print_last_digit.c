@@ -1,23 +1,20 @@
 #include "main.h"
-
 /**
- * @-print_last_digit.c - check the code for Holberton School students.
- * Return: Always 0
+ * print_last_digit - a function that prints the last digit of a number
+ * @nld: number's last digit result
+ * Return: value of the last digit
  */
-int print_last_digit(int n)
+int print_last_digit(int nld)
 {
-	n = (n % 10);
-	n = n % 10;
+	int pld;
 
-	if (n < 0)
+	pld = (nld % 10);
+
+	if (pld < 0)
 	{
-		return (-n);
+		pld = (-1 * pld);
 	}
-	else
-	{
-		n = -n;
-		_putchar(n + '0');
-		return (n);
-	}
-	return (0);
+
+	_putchar(pld + '0');
+	return (pld);
 }
