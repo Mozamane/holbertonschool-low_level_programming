@@ -1,17 +1,19 @@
 #include "main.h"
 
 /**
- * swap_int - check the code for Holberton School students.
- * @a: is a pointer int type
- * @b: is a pointer int type
- * Return: Always 0.
- */
-
+  * swap_int - Swaps the values of two integers
+  *
+  * @a: An integer to swap
+  * @b: Another integer to swap
+  *
+  * Return: void
+  */
 void swap_int(int *a, int *b)
 {
-int c;
+	int aux;
 
-c = *a;
-*a = *b;
-*b = c;
+	aux = *a;
+	*a = *b;
+	*b = aux;
+
 }
