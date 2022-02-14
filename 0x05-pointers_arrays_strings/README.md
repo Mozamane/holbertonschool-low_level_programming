@@ -1,5 +1,1 @@
-Concepts
-For this project, students are expected to look at these concepts:
-
-Pointers and arrays
-Data Structures
+Write a function that takes a pointer to an int as parameter and updates the value it points to to 98.
