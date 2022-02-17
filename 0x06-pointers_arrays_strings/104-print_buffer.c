@@ -1,84 +1,52 @@
 #include "main.h"
-#include <stdio.h>
-#include <stdlib.h>
 /**
- * print_buffer - prints contents of a buffer
- *
- * @b: buffer to print
- * @size: size of buffer
- *
- * Return: always void
- */
+*print_buffer -  C function that prints the content of an
+*  inputted number of bytes from a buffer.
+* Prints 10 bytes per line.
+* Starts with the position of the first byte in hexadecimal (8 chars),
+* starting with `0`.
+* Each line shows the hexadecimal content (2 chars) of the buffer,
+* 2 bytes at a time, separated by a space.
+* Each line shows the content of the buffer.
+* Prints the byte if it is printable; if not, prints `.`.
+* Each line ends with a new line `\n`.
+* If the inputted byte size is 0 or less, the function only prints a new line.
+*@b: number of bytes
+*@size: size of the byte
+*/
 void print_buffer(char *b, int size)
 {
-	int quo, rem, i = 0;
-	int bitCounter = 0, numBitsInLine;
+	int i = 0, j;
 
-	if (size == 0)
+	if (size < 0)
+	{
+		printf('\n');
 		return;
-	quo = size / 10;
-	rem = size % 10;
-	if (rem)
-		quo++;
-	while (i < quo) /* loop through 10 bits at a time */
-	{
-		numBitsInLine = (size - rem) > bitCounter ? 10 : rem;
-		printf("%.8x: ", bitCounter);
-		print_hex_line(b, numBitsInLine, bitCounter);
-		print_buffer_line(b, numBitsInLine, bitCounter);
-		putchar('\n');
-		bitCounter += 10;
-		i++;
 	}
-}
-/**
- * print_hex_line - prints chars of buffer as hex in sets of 2
- *
- * @b: buffer to print line from
- * @numBitsInLine: number of bits in line, print spaces to fill in
- * @currentPos: position in array of starting point of line
- *
- * Return: always void
- */
-void print_hex_line(char *b, int numBitsInLine, int currentPos)
-{
-	int nestedCounter = 0;
 
-	while (nestedCounter < 10)
+	while (i < size)
 	{
-		if (nestedCounter >= numBitsInLine)
-			printf("  ");
-		else
-			printf("%.2x", b[currentPos + nestedCounter]);
-		if (nestedCounter % 2)
-			putchar(' ');
-		nestedCounter++;
-	}
-}
-/**
- * print_buffer_line - prints chars of buffer as buffchar in sets of 2
- *
- * @b: buffer to print line from
- * @numBitsInLine: number of bits in line, print spaces to fill in
- * @currentPos: position in array of starting point of line
- *
- * Return: always void
- */
-void print_buffer_line(char *b, int numBitsInLine, int currentPos)
-{
-	int nestedCounter = 0;
-
-	while (nestedCounter < 10)
-	{
-		if (nestedCounter >= numBitsInLine)
-			break;
-		else if (b[currentPos + nestedCounter] >= 32
-			&& b[currentPos + nestedCounter] < 127)
+		if (i % 10 == 0)
+			printf("%08x: ", i);
+		for (j = i; j < i + 9; j += 2)
 		{
-			printf("%c", b[currentPos + nestedCounter]);
+			if ((j < size) && ((j + 1) < size))
+				printf("%02x%02x: ", b[j], b[j + 1]);
+			else
+			{
+				while (++j <= i + 10)
+					printf(" ");
+				printf(" ");
+			}
 		}
-		else
-			printf(".");
-		nestedCounter++;
+		for (j = i; j < i + 9 && j < size; j++)
+		{
+			if (b[j] >= 32 && b[j] <= 126)
+				printf("%c", b[j]);
+			else
+				printf(".");
+		}
+		printf('\n');
+		i += 10;
 	}
 }
