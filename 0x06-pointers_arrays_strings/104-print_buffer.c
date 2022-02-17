@@ -1,8 +1,6 @@
 #include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-void print_hex_line(char *buffer, int numBitsInLine, int currentPosition);
-void print_buffer_line(char *b, int n, int cur);
 /**
  * print_buffer - prints contents of a buffer
  *
