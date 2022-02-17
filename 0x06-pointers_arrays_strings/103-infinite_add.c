@@ -1,5 +1,4 @@
 #include "main.h"
-
 /**
  *infinite_add - add three numbers.
  *
