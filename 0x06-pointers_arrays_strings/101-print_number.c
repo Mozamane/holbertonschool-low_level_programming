@@ -1,34 +1,47 @@
 #include "main.h"
-void print_unsigned_int(unsigned int n);
+
 /**
- * print_number - print number n with putchar
- *
- * @n: number to print
- *
- * Return: always void
+ * print_number - Function that prints an integer.
+ * @n: int type number
+ * Description: Can only use _putchar to print.
  */
 void print_number(int n)
 {
-	if (n < 0)
+	long m; /* power of 10 */
+	int c; /* boolean check */
+	long num; /* convert int to long */
+
+	num = n;
+	/* negatives */
+	if (num < 0)
 	{
+		num *= -1;
 		_putchar('-');
-		print_unsigned_int(-(unsigned int)n);
 	}
-	else
-		print_unsigned_int(n);
-}
-/**
- * print_unsigned_int - prints an unsigned integer
- *
- * @n: an unsigned integer to print
- *
- * Return: always void
- */
-void print_unsigned_int(unsigned int n)
-{
-	if (n / 10 != 0)
+
+	/* count up */
+	m = 1;
+	c = 1;
+	while (c)
 	{
-		print_unsigned_int(n / 10);
+		if (num / (m * 10) > 0)
+			m *= 10;
+		else
+			c = 0;
 	}
-	_putchar((n % 10) + '0');
+
+	/* count down */
+	while (num >= 0)
+	{
+		if (m == 1)
+		{
+			_putchar(num % 10 + '0');
+			num = -1;
+		}
+		else
+		{
+			_putchar((num / m % 10) + '0');
+			m /= 10;
+		}
+	}
 }
