@@ -1,25 +1,22 @@
-#include <stdlib.h>
 #include "main.h"
 
 /**
-  * flip_bits - ...
-  * @n: ...
-  * @m: ...
-  *
-  * Return: ...
-  */
+ * flip_bits - returns the number of bits you would need to flip
+ * @n : unsigned long int
+ * @m : unsigned long int
+ * Return: number of bits you would need to flip
+ */
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned long int mask = 0, count = 0;
+	unsigned long int t;
+	int i = 0;
 
-	mask = n ^ m;
-	while (mask)
+	t = n ^ m;
+	while (t >= 1)
 	{
-		if (mask & 1)
-			count++;
-
-		mask >>= 1;
+		if ((t & 1) == 1)
+		i++;
+		t >>= 1;
 	}
-
-	return (count);
+	return (i);
 }
