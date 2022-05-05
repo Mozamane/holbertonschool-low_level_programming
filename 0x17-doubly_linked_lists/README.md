@@ -59,4 +59,4 @@ What you should learn from this project:
 ---
 
 ## Author
-* **Mozamane Baloyi** 
+* **Sebastian Lopez Herrera** - [sebas119](https://github.com/sebas119)
